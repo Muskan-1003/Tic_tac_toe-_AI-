@@ -27,7 +27,8 @@ public class Main {
                     System.out.println("Invalid move. Try again.");
                 }
             } else {
-                System.out.println("Player O (AI) is making a move...");
+                System.out.println("Player O (AI) is making a mo" +
+                        "ve...");
                 makeAIMove(board);
                 gameOver = haveWon(board, 'O');
                 player = 'X';
@@ -86,6 +87,11 @@ public class Main {
     private static void makeAIMove(char[][] board) {
         int[] bestMove = minimax(board, 'O');
         board[bestMove[0]][bestMove[1]] = 'O';
+
+        if (haveWon(board, 'O')) {
+            System.out.println("Player O (AI) has won!");
+            System.exit(0); // Exit the game
+        }
     }
 
     private static int[] minimax(char[][] board, char player) {
